@@ -21,17 +21,17 @@
     <h1 class="text-center">Fitness Booking</h1>
     <div id="calendar"></div>
 
-    <script>
-        document.addEventListener('DOMContentLoaded', function () {
-          var calendarEl = document.getElementById('calendar');
-          var calendar = new FullCalendar.Calendar(calendarEl, {
-            initialView: 'timeGridWeek',
-            nowIndicator: true,
-            slotMinTime: '08:00:00',
-            slotMaxTime: '22:00:00'
-          });
-          calendar.render();
-        });
-    </script>
+    @section Scripts {
+        <script>
+            document.addEventListener('DOMContentLoaded', function () {
+                var calendarEl = document.getElementById('calendar');
+                var calendar = new FullCalendar.Calendar(calendarEl, {
+                    initialView: 'timeGridWeek',
+                    events: '/api/sessions'   // ★ APIから予定を取得
+                });
+                calendar.render();
+            });
+        </script>
+    }
 </body>
 </html>

@@ -36,6 +36,37 @@ namespace FitnessBooking.Migrations
                     b.ToTable("Clients");
                 });
 
+            modelBuilder.Entity("FitnessBooking.Domain.Entities.Session", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("INTEGER");
+
+                    b.Property<int>("ClientId")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<DateTime>("End")
+                        .HasColumnType("TEXT");
+
+                    b.Property<DateTime>("Start")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("Title")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
+                    b.Property<int>("TrainerId")
+                        .HasColumnType("INTEGER");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("ClientId");
+
+                    b.HasIndex("TrainerId");
+
+                    b.ToTable("Sessions");
+                });
+
             modelBuilder.Entity("FitnessBooking.Domain.Entities.Trainer", b =>
                 {
                     b.Property<int>("Id")
@@ -78,6 +109,25 @@ namespace FitnessBooking.Migrations
                     b.HasIndex("TrainerId", "Start", "End");
 
                     b.ToTable("TrainingSessions");
+                });
+
+            modelBuilder.Entity("FitnessBooking.Domain.Entities.Session", b =>
+                {
+                    b.HasOne("FitnessBooking.Domain.Entities.Client", "Client")
+                        .WithMany()
+                        .HasForeignKey("ClientId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("FitnessBooking.Domain.Entities.Trainer", "Trainer")
+                        .WithMany()
+                        .HasForeignKey("TrainerId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Client");
+
+                    b.Navigation("Trainer");
                 });
 #pragma warning restore 612, 618
         }

@@ -8,6 +8,7 @@ namespace FitnessBooking.Data
         public DbSet<Client> Clients => Set<Client>();
         public DbSet<Trainer> Trainers => Set<Trainer>();
         public DbSet<TrainingSession> TrainingSessions => Set<TrainingSession>();
+        public DbSet<Session> Sessions { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
