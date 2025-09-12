@@ -1,0 +1,18 @@
+[
+  {
+    "ContainingType": "FitnessBooking.Controllers.ReservationsController",
+    "Method": "Post",
+    "RelativePath": "api/Reservations",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "req",
+        "Type": "FitnessBooking.Controllers.ReservationsController\u002BBookRequest",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  }
+]
