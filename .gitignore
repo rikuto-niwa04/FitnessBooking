@@ -1,0 +1,24 @@
+# Visual Studio
+.vs/
+**/.vs/
+
+# Build artifacts
+bin/
+obj/
+**/bin/
+**/obj/
+
+# LibMan restored assets
+wwwroot/lib/
+**/wwwroot/lib/
+
+# SQLite DB
+*.db
+*.db-wal
+*.db-shm
+
+# Misc
+*.user
+*.suo
+*.vsidx
+.vscode/
