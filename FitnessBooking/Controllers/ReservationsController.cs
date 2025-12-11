@@ -1,4 +1,5 @@
-﻿using FitnessBooking.Services;
+﻿using FitnessBooking.Domain.Entities;
+using FitnessBooking.Services;
 using Microsoft.AspNetCore.Mvc;
 
 namespace FitnessBooking.Controllers;
@@ -12,7 +13,7 @@ public class ReservationsController(ISchedulingService scheduling) : ControllerB
     [HttpPost]
     public async Task<IActionResult> Post([FromBody] BookRequest req)
     {
-        var result = await scheduling.BookAsync(req.ClientId, req.TrainerId, req.Start, req.End);
+        TrainingSession? result = await scheduling.BookAsync(req.ClientId, req.TrainerId, req.Start, req.End);
         return result is null ? Conflict("Time slot already booked.") : Ok(result);
     }
 }
